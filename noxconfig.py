@@ -7,12 +7,12 @@ from exasol.toolbox.config import BaseConfig
 
 
 class Config(BaseConfig):
-    root: Path = Path(__file__).parent
+    project_name: str = "sqlglot-toolbox"
+    root_path: Path = Path(__file__).parent
     doc: Path = Path(__file__).parent / "doc"
-    source: Path = Path("exasol/sqlglot_toolbox")
+    source: Path = Path("sqlglot_toolbox")
     version_file: Path = (
             Path(__file__).parent
-            / "exasol"
             / "sqlglot_toolbox"
             / "version.py"
     )

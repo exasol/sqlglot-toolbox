@@ -14,7 +14,7 @@ dynamic = ["dependencies"]
 [tool.poetry]
 requires-poetry = ">=2.1.0"
 packages = [
-    { include = "exasol" },
+    { include = "sqlglot_toolbox" },
 ]
 
 [poetry.urls]
@@ -37,7 +37,7 @@ build-backend = "poetry.core.masonry.api"
 [tool.coverage.run]
 relative_files = true
 source = [
-    "exasol",
+    "sqlglot_toolbox",
 ]
 
 [tool.coverage.report]
@@ -80,4 +80,4 @@ ignore_errors = true
 projectKey = "com.exasol:sqlglot-toolbox"
 host.url = "https://sonarcloud.io"
 organization = "exasol"
-exclusions = "exasol/sqlglot_toolbox/version.py"
+exclusions = "sqlglot_toolbox/version.py"

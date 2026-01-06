@@ -1,5 +1,5 @@
-from test.unit.utils.test_dialect import Validator
-from exasol.sqlglot_toolbox.dialects.exasol import ExasolToolBox
+from test.utils.test_dialect import Validator
+from sqlglot_toolbox.dialects.exasol import ExasolToolBox
 
 
 class TestExasol(Validator):
@@ -17,7 +17,7 @@ class TestExasol(Validator):
                 self.validate_all(
                     f"SELECT TO_CHAR(CAST('2024-07-14 02:40:00' AS TIMESTAMP), '{exasol_fmt}')",
                     read={
-                        "databricks": f"SELECT date_format( TIMESTAMP '2024-07-14 02:40:00', '{databricks_fmt}')",
+                        "databricks": f"SELECT date_format(CAST('2024-07-14 02:40:00' AS TIMESTAMP), '{databricks_fmt}')",
                     },
                     write={
                         "oracle": f"SELECT TO_CHAR(CAST('2024-07-14 02:40:00' AS TIMESTAMP), '{oracle_fmt}')",
