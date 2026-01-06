@@ -5,7 +5,6 @@ from sqlglot import (
     UnsupportedError,
     parse_one,
 )
-from sqlglot.dialects import BigQuery, Hive, Snowflake, Spark2
 from sqlglot.parser import logger as parser_logger
 
 
@@ -15,9 +14,13 @@ class Validator(unittest.TestCase):
     def parse_one(self, sql, **kwargs):
         return parse_one(sql, read=self.dialect, **kwargs)
 
-
     def validate_identity(
-        self, sql, write_sql=None, pretty=False, check_command_warning=False, identify=False
+        self,
+        sql,
+        write_sql=None,
+        pretty=False,
+        check_command_warning=False,
+        identify=False,
     ):
         if check_command_warning:
             with self.assertLogs(parser_logger) as cm:
@@ -27,7 +30,8 @@ class Validator(unittest.TestCase):
             expression = self.parse_one(sql)
 
         self.assertEqual(
-            write_sql or sql, expression.sql(dialect=self.dialect, pretty=pretty, identify=identify)
+            write_sql or sql,
+            expression.sql(dialect=self.dialect, pretty=pretty, identify=identify),
         )
         return expression
 
@@ -62,7 +66,9 @@ class Validator(unittest.TestCase):
             with self.subTest(f"{sql} -> {write_dialect}"):
                 if write_sql is UnsupportedError:
                     with self.assertRaises(UnsupportedError):
-                        expression.sql(write_dialect, unsupported_level=ErrorLevel.RAISE)
+                        expression.sql(
+                            write_dialect, unsupported_level=ErrorLevel.RAISE
+                        )
                 else:
                     self.assertEqual(
                         expression.sql(

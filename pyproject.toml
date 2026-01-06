@@ -14,7 +14,7 @@ dynamic = ["dependencies"]
 [tool.poetry]
 requires-poetry = ">=2.1.0"
 packages = [
-    { include = "sqlglot_toolbox" },
+       { include = "exasol" },
 ]
 
 [poetry.urls]
@@ -37,7 +37,7 @@ build-backend = "poetry.core.masonry.api"
 [tool.coverage.run]
 relative_files = true
 source = [
-    "sqlglot_toolbox",
+    "exasol",
 ]
 
 [tool.coverage.report]

@@ -1,22 +1,19 @@
 from __future__ import annotations
 
+from collections.abc import Iterable
 from pathlib import Path
-from typing import Iterable
 
 from exasol.toolbox.config import BaseConfig
 
 
 class Config(BaseConfig):
-    project_name: str = "sqlglot-toolbox"
+    project_name: str = "sqlglot_toolbox"
     root_path: Path = Path(__file__).parent
     doc: Path = Path(__file__).parent / "doc"
-    source: Path = Path("sqlglot_toolbox")
-    version_file: Path = (
-            Path(__file__).parent
-            / "sqlglot_toolbox"
-            / "version.py"
-    )
+    source: Path = root_path / "exasol" / "sqlglot_toolbox"
+    version_file: Path = source / "version.py"
     path_filters: Iterable[str] = ()
     plugins: Iterable[object] = ()
+
 
 PROJECT_CONFIG = Config()

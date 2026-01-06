@@ -1,5 +1,6 @@
 from test.utils.test_dialect import Validator
-from sqlglot_toolbox.dialects.exasol import ExasolToolBox
+
+from exasol.sqlglot_toolbox.dialects.exasol import ExasolToolBox
 
 
 class TestExasol(Validator):
