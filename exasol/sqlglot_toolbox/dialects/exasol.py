@@ -8,7 +8,7 @@ date and time format mappings.
 from sqlglot.dialects.exasol import Exasol
 
 
-class ExasolToolBox(Exasol):
+class ExasolExtended(Exasol):
     """
     Extended Exasol dialect for SQLGlot Toolbox.
 

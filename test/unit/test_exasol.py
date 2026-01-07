@@ -1,10 +1,10 @@
 from test.utils.test_dialect import Validator
 
-from exasol.sqlglot_toolbox.dialects.exasol import ExasolToolBox
+from exasol.sqlglot_toolbox.dialects.exasol import ExasolExtended
 
 
 class TestExasol(Validator):
-    dialect = ExasolToolBox
+    dialect = ExasolExtended
     maxDiff = None
 
     def test_exasol_datetime_format_mapping(self):

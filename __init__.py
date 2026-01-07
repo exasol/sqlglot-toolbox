@@ -1,1 +1,1 @@
-from exasol.sqlglot_toolbox.dialects.exasol import ExasolToolBox  # noqa: F401
+from exasol.sqlglot_toolbox.dialects.exasol import ExasolExtended  # noqa: F401

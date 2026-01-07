@@ -23,8 +23,6 @@ homepage = "https://github.com/exasol/sqlglot-toolbox"
 
 [tool.poetry.dependencies]
 sqlglot = "28.5.0"
-toolbox = "^1.11.0"
-exasol-toolbox = "^4.0.0"
 
 [tool.poetry.group.dev.dependencies]
 exasol-toolbox = "^4.0.0"
