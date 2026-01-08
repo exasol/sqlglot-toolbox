@@ -25,6 +25,7 @@ homepage = "https://github.com/exasol/sqlglot-toolbox"
 sqlglot = "28.5.0"
 
 [tool.poetry.group.dev.dependencies]
+pyexasol = "^2.0.0"
 pytest-exasol-backend = "^1.2.4"
 exasol-toolbox = "^4.0.0"
 
