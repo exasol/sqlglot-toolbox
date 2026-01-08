@@ -21,7 +21,7 @@ class Config(BaseConfig):
     source: Path = root_path / "exasol" / "sqlglot_toolbox"
     version_file: Path = source / "version.py"
     path_filters: Iterable[str] = ()
-    plugins: Iterable[object] = ((),)
+    plugins: Iterable[object] = ()
 
 
 PROJECT_CONFIG = Config(
