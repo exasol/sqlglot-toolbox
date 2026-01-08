@@ -16,8 +16,8 @@ class TestExasol(Validator):
     maxDiff = None
 
     @pytest.mark.xfail(
-        reason="""The test is dependent on sqlglot new release >28.5.0
-     where TO_CHAR function in exasol dialect was fixed"""
+        reason="""This test fails until function TO_CHAR is fixed in a future release > 28.5.0 of sqlglot.
+See ticket https://github.com/exasol/sqlglot-toolbox/issues/5 for re-enabling the test."""
     )
     def test_exasol_datetime_format_mapping(self):
         """Validate Exasol ↔ Databricks ↔ Oracle datetime formats."""
