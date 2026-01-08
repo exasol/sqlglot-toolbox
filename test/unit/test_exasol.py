@@ -1,10 +1,12 @@
 """Tests for the Exasol SQLGlot dialect extensions."""
 
-# pylint: disable=too-few-public-methods
+import pytest
 
 from exasol.sqlglot_toolbox.dialects.exasol import ExasolExtended
 
 from .utils.validator import Validator
+
+# pylint: disable=too-few-public-methods
 
 
 class TestExasol(Validator):
@@ -13,6 +15,10 @@ class TestExasol(Validator):
     dialect = ExasolExtended
     maxDiff = None
 
+    @pytest.mark.xfail(
+        reason="""The test is dependent on sqlglot new release >28.5.0
+     where TO_CHAR function in exasol dialect was fixed"""
+    )
     def test_exasol_datetime_format_mapping(self):
         """Validate Exasol ↔ Databricks ↔ Oracle datetime formats."""
         test_cases = [
