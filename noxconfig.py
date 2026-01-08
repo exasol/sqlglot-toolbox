@@ -24,4 +24,6 @@ class Config(BaseConfig):
     plugins: Iterable[object] = ()
 
 
-PROJECT_CONFIG = Config()
+PROJECT_CONFIG = Config(
+    python_versions=("3.10", "3.11", "3.12", "3.13"), exasol_versions=("2025.1.8",)
+)
