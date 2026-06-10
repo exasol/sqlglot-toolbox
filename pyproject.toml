@@ -86,4 +86,3 @@ ignore_errors = true
 projectKey = "com.exasol:sqlglot-toolbox"
 host.url = "https://sonarcloud.io"
 organization = "exasol"
-exclusions = "sqlglot_toolbox/version.py"
