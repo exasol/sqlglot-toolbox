@@ -23,7 +23,7 @@ dependencies = ["sqlglot==28.5.0"]
 dev = [
     "pyexasol>=2.0.0,<3",
     "pytest-exasol-backend>=1.2.4,<2",
-    "exasol-toolbox>=4.0.0,<5",
+    "exasol-toolbox>=8.2.0,<9",
 ]
 
 [tool.poetry]
