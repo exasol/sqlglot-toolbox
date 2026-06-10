@@ -16,18 +16,18 @@ jobs:
     runs-on: ubuntu-24.04
     permissions:
       contents: read
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     strategy:
       fail-fast: false
       matrix: ${{ fromJson(needs.build-matrix.outputs.matrix) }}
 
     steps:
       - name: SCM Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
 
       - name: Setup Python & Poetry Environment
-        uses: exasol/python-toolbox/.github/actions/python-environment@v4
+        uses: exasol/python-toolbox/.github/actions/python-environment@v8
         with:
           python-version: ${{ matrix.python-version }}
 
@@ -37,8 +37,9 @@ jobs:
           --coverage --db-version ${{ matrix.exasol-version }} --backend=onprem
 
       - name: Upload Artifacts
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: coverage-python${{ matrix.python-version }}-exasol${{ matrix.exasol-version }}-slow
           path: .coverage
           include-hidden-files: true
+          overwrite: false
