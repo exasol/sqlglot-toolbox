@@ -5,21 +5,23 @@ on:
 
 jobs:
   build-matrix:
-    name: Generate Build Matrix
-    uses: ./.github/workflows/matrix-all.yml
+    name: Build Matrix
+    uses: ./.github/workflows/matrix.yml
+    with:
+      matrix_keys_json: '["exasol_versions", "python_versions"]'
     permissions:
       contents: read
 
   tests:
-    name: Integration-Tests (Python-${{ matrix.python-version }}, Exasol-${{ matrix.exasol-version}})
-    needs: [ build-matrix ]
+    name: Integration-Tests (Python-${{ matrix.python_versions }}, Exasol-${{ matrix.exasol_versions}})
+    needs:
+     - build-matrix
     runs-on: ubuntu-24.04
     permissions:
       contents: read
     strategy:
       fail-fast: false
       matrix: ${{ fromJson(needs.build-matrix.outputs.matrix) }}
-
     steps:
       - name: SCM Checkout
         uses: actions/checkout@v6
@@ -27,19 +29,21 @@ jobs:
           persist-credentials: false
 
       - name: Setup Python & Poetry Environment
-        uses: exasol/python-toolbox/.github/actions/python-environment@v8
+        uses: exasol/python-toolbox/.github/actions/python-environment@v10
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: ${{ matrix.python_versions }}
 
       - name: Run Tests and Collect Coverage
         run: >
           poetry run -- nox -s test:integration --
-          --coverage --db-version ${{ matrix.exasol-version }} --backend=onprem
+          --coverage --db-version ${MATRIX_EXASOL_VERSIONS} --backend=onprem
+        env:
+          MATRIX_EXASOL_VERSIONS: ${{ matrix.exasol_versions }}
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v7
         with:
-          name: coverage-python${{ matrix.python-version }}-exasol${{ matrix.exasol-version }}-slow
+          name: coverage-python${{ matrix.python_versions }}-exasol${{ matrix.exasol_versions }}-slow
           path: .coverage
           include-hidden-files: true
           overwrite: false
