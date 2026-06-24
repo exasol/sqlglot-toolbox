@@ -36,7 +36,9 @@ jobs:
       - name: Run Tests and Collect Coverage
         run: >
           poetry run -- nox -s test:integration --
-          --coverage --db-version ${{ matrix.exasol_versions }} --backend=onprem
+          --coverage --db-version ${MATRIX_EXASOL_VERSIONS} --backend=onprem
+        env:
+          MATRIX_EXASOL_VERSIONS: ${{ matrix.exasol_versions }}
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v7
