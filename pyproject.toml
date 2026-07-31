@@ -3,37 +3,43 @@ name = "exasol-sqlglot-toolbox"
 version = "0.1.0"
 requires-python = ">=3.10,<3.14"
 description = "An extension and toolbox to the Exasol dialect in SQLglot"
-authors = [
-    {name = "Exasol AG", email = "opensource@exasol.com"},
-]
+authors = [{ name = "Exasol AG", email = "opensource@exasol.com" }]
 readme = "README.rst"
 license = "MIT"
-keywords = ['exasol', 'sqlglot_toolbox']
-dynamic = ["dependencies"]
+keywords = [
+    "exasol",
+    "sqlglot_toolbox",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+dependencies = ["sqlglot==28.5.0"]
+
+[dependency-groups]
+dev = [
+    "pyexasol>=2.0.0,<3",
+    "pytest-exasol-backend>=1.2.4,<2",
+    "exasol-toolbox>=10.0.0,<11",
+]
 
 [tool.poetry]
-requires-poetry = ">=2.1.0"
+requires-poetry = ">=2.3.0"
 packages = [
        { include = "exasol" },
 ]
-
-[poetry.urls]
-repository = "https://github.com/exasol/sqlglot-toolbox"
-homepage = "https://github.com/exasol/sqlglot-toolbox"
-
-[tool.poetry.dependencies]
-sqlglot = "28.5.0"
-
-[tool.poetry.group.dev.dependencies]
-pyexasol = "^2.0.0"
-pytest-exasol-backend = "^1.2.4"
-exasol-toolbox = "^4.0.0"
 
 [build-system]
 requires = ["poetry-core>=2.0.0"]
 build-backend = "poetry.core.masonry.api"
 
-# Tooling - marking what to show in the documentation
+[project.urls]
+repository = "https://github.com/exasol/sqlglot-toolbox"
+homepage = "https://github.com/exasol/sqlglot-toolbox"
+
 [tool.coverage.run]
 relative_files = true
 source = [
@@ -76,8 +82,10 @@ module = [
 ]
 ignore_errors = true
 
+[tool.poetry.requires-plugins]
+poetry-plugin-export = ">=1.8"
+
 [tool.sonar]
 projectKey = "com.exasol:sqlglot-toolbox"
 host.url = "https://sonarcloud.io"
 organization = "exasol"
-exclusions = "exasol/sqlglot_toolbox/version.py"

@@ -1,7 +1,7 @@
 sqlglot-toolbox
 ===============
 
-An extension and toolbox to the Exasol dialect in SQLglot
+An extension and toolbox to the Exasol dialect in SQLglot 
 
 .. image:: https://img.shields.io/pypi/l/sqlglot_toolbox
     :target: https://opensource.org/licenses/MIT
