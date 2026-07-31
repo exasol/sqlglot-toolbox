@@ -16,4 +16,3 @@ doc/changes/changelog.md  linguist-generated=true
 .github/workflows/periodic-validation.yml   linguist-generated=true
 .github/workflows/pr-merge.yml              linguist-generated=true
 .github/workflows/report.yml                linguist-generated=true
-
