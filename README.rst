@@ -25,7 +25,7 @@ An extension and toolbox to the Exasol dialect in SQLglot
 🔌️ Prerequisites
 -----------------
 
-- `Python <https://www.python.org/>`__ >= 3.10
+- `Python <https://www.python.org/>`__ >= 3.11
 
 💾 Installation
 ---------------
