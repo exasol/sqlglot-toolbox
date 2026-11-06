@@ -16,7 +16,7 @@ jobs:
     name: Integration-Tests (Python-${{ matrix.python_versions }}, Exasol-${{ matrix.exasol_versions}})
     needs:
      - build-matrix
-    runs-on: ubuntu-24.04
+    runs-on: "ubuntu-26.04"
     permissions:
       contents: read
     strategy:
@@ -24,12 +24,12 @@ jobs:
       matrix: ${{ fromJson(needs.build-matrix.outputs.matrix) }}
     steps:
       - name: SCM Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           persist-credentials: false
 
       - name: Setup Python & Poetry Environment
-        uses: exasol/python-toolbox/.github/actions/python-environment@v10
+        uses: exasol/python-toolbox/.github/actions/python-environment@v12
         with:
           python-version: ${{ matrix.python_versions }}
 
